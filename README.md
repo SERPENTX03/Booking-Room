@@ -1,8 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
-
-First, run the development server:
+การจองที่พัก โดย NextJS15 TailwindCss Typescript ใช้ Prisma ติดต่อฐานข้อมูล MongoDB 
+มีหน้าแอดมิน สำหรับเพิ่มที่พัก ปรับสถานะการจอง ล็อกอิน ด้วยGoogle ด้วย Next auth ใช้ server action แทนการเขียน api
 
 ```bash
 npm run dev
