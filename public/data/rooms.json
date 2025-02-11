@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Garden View Room",
+    "price": 1500,
+    "isAvailable": true,
+    "image": "/images/room1.jpg",
+    "description": "ห้องพักสบาย ๆ พร้อมวิวสวน",
+    "capacity": 2
+  },
+  {
+    "name": "Modern Style Room",
+    "price": 1800,
+    "isAvailable": true,
+    "image": "/images/room2.jpg",
+    "description": "ห้องพักสไตล์โมเดิร์นพร้อมสิ่งอำนวยความสะดวกครบครัน",
+    "capacity": 2
+  },
+  {
+    "name": "Sea View Room",
+    "price": 2000,
+    "isAvailable": true,
+    "image": "/images/room3.jpg",
+    "description": "ห้องพักขนาดใหญ่พร้อมวิวทะเล",
+    "capacity": 4
+  },
+  {
+    "name": "Budget Room",
+    "price": 1200,
+    "isAvailable": true,
+    "image": "/images/room4.jpg",
+    "description": "ห้องพักราคาประหยัดสำหรับนักเดินทาง",
+    "capacity": 1
+  },
+  {
+    "name": "Luxury Room with Jacuzzi",
+    "price": 2500,
+    "isAvailable": true,
+    "image": "/images/room5.jpg",
+    "description": "ห้องพักสุดหรูพร้อมอ่างจากุซซี่",
+    "capacity": 3
+  },
+  {
+    "name": "Mountain View Room",
+    "price": 1600,
+    "isAvailable": true,
+    "image": "/images/room6.jpg",
+    "description": "ห้องพักพร้อมวิวภูเขาและระเบียงส่วนตัว",
+    "capacity": 2
+  },
+  {
+    "name": "Minimal City Room",
+    "price": 1400,
+    "isAvailable": true,
+    "image": "/images/room7.jpg",
+    "description": "ห้องพักสไตล์มินิมอลในเมือง",
+    "capacity": 2
+  },
+  {
+    "name": "Loft City View Room",
+    "price": 1900,
+    "isAvailable": true,
+    "image": "/images/room9.jpg",
+    "description": "ห้องพักแบบ Loft พร้อมวิวเมือง",
+    "capacity": 3
+  },
+  {
+    "name": "Suite Room with Living Area",
+    "price": 3000,
+    "isAvailable": true,
+    "image": "/images/room10.jpg",
+    "description": "ห้อง Suite พร้อมห้องรับแขกและวิวทะเล",
+    "capacity": 4
+  }
+]

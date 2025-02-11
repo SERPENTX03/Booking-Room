@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CHECKED_IN
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId // MongoDB ใช้ _id เป็น Primary Key
+  name          String?
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified") // Map ให้ตรงกับ database
+  image         String?
+  password      String? // สำหรับ Credentials Login
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  accounts Account[]
+  sessions Session[]
+  bookings Booking[]
+}
+
+model Room {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  name        String // ชื่อห้อง เช่น Deluxe, Standard
+  description String? // รายละเอียดห้อง
+  price       Float // ราคาต่อคืน
+  capacity    Int // จำนวนคนสูงสุด
+  images      String[] // รูปภาพห้องพัก
+  isAvailable Boolean   @default(true) // ห้องว่างหรือไม่
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @updatedAt
+
+  bookings Booking[] // ✅ ความสัมพันธ์กับการจอง
+}
+
+model Booking {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  name        String
+  roomId      String   @db.ObjectId
+  checkIn     DateTime
+  phoneNumber String
+  roomName    String   
+  status    BookingStatus @default(PENDING) // ✅ สถานะการจอง
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String   @id @map("_id")
+  token      String   @unique
+  expires    DateTime
+}
